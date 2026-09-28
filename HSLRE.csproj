@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>HSLRE</RootNamespace>
+    <!-- Must stay "HSLRE": drop-in replacement for the original plugin. -->
+    <AssemblyName>HSLRE</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <LangVersion>7.3</LangVersion>
+    <DefineConstants>HONEYSELECT;IPA;BETA</DefineConstants>
+
+    <!-- Honey Select install to build against and copy the DLL into: msbuild /p:HSDir="C:\path\to\HoneySelect" -->
+    <HSDir Condition=" '$(HSDir)' == '' ">..\HoneySelect</HSDir>
+    <ManagedDir>$(HSDir)\StudioNEO_64_Data\Managed</ManagedDir>
+    <PluginsDir>$(HSDir)\Plugins</PluginsDir>
+    <DeployDir Condition=" '$(DeployDir)' == '' ">$(PluginsDir)</DeployDir>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>$(ManagedDir)\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(ManagedDir)\UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(ManagedDir)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>$(ManagedDir)\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="IllusionPlugin">
+      <HintPath>$(ManagedDir)\IllusionPlugin.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="IllusionInjector">
+      <HintPath>$(ManagedDir)\IllusionInjector.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(PluginsDir)\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="HSUIKit">
+      <HintPath>..\HSUIKit\bin\Release\HSUIKit.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="HSExtSave">
+      <HintPath>$(PluginsDir)\HSExtSave.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The root copy of ProceduralSkyboxManager.cs is stale; the original project compiles HSIBL\ProceduralSkyboxManager.cs. -->
+    <Compile Include="Upstream\HSLRE\**\*.cs" Exclude="Upstream\HSLRE\ProceduralSkyboxManager.cs;Upstream\HSLRE\obj\**;Upstream\HSLRE\bin\**" />
+    <Compile Include="Kit\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Upstream\HSLRE\Resources\lreresources.unity3d">
+      <LogicalName>HSLRE.Resources.LREResources.unity3d</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kit\Resources\hslreoverlays">
+      <LogicalName>HSLRE.Resources.hslreoverlays</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Upstream\HSLRE\Resources\postprocessingeffects_resource">
+      <LogicalName>HSLRE.Resources.postprocessingeffects_resource</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <Import Project="Upstream\ToolBox_Shared\ToolBox_Shared.projitems" Label="Shared" />
+
+  <Target Name="CopyToPlugins" AfterTargets="Build">
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(DeployDir)" ContinueOnError="true" />
+  </Target>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Shared\ToolbarBackground.cs" />
+    <EmbeddedResource Include="Shared\toolbar_bg.png"><LogicalName>ToolbarBackground.png</LogicalName></EmbeddedResource>
+  </ItemGroup>
+</Project>

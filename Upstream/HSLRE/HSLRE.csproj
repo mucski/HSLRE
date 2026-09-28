@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration>Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{38517CA0-3427-413D-8855-98D4A6A44B15}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HSLRE</RootNamespace>
+    <AssemblyName>HSLRE</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'HS|AnyCPU'">
+    <OutputPath>bin\HoneySelect\</OutputPath>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>HONEYSELECT;IPA;BETA</DefineConstants>
+    <Optimize>true</Optimize>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>E:\illusion\HoneySelect\Plugins\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Condition=" '$(Configuration)' == 'HS' " Include="Assembly-CSharp">
+      <HintPath>E:\illusion\HoneySelect\StudioNEO_64_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Condition=" '$(Configuration)' == 'HS' " Include="Assembly-CSharp-firstpass">
+      <HintPath>E:\illusion\HoneySelect\StudioNEO_64_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="IllusionInjector">
+      <HintPath>E:\illusion\HoneySelect\StudioNEO_64_Data\Managed\IllusionInjector.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Condition=" '$(Configuration)' == 'HS' " Include="IllusionPlugin">
+      <HintPath>E:\illusion\HoneySelect\StudioNEO_64_Data\Managed\IllusionPlugin.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Condition=" '$(Configuration)' == 'HS' " Include="UnityEngine">
+      <HintPath>E:\illusion\HoneySelect\StudioNEO_64_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Condition=" '$(Configuration)' == 'HS' " Include="UnityEngine.UI">
+      <HintPath>E:\illusion\HoneySelect\StudioNEO_64_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Condition=" '$(Configuration)' == 'HS' " Include="UnityEngine.UI.Translation">
+      <HintPath>E:\illusion\HoneySelect\StudioNEO_64_Data\Managed\UnityEngine.UI.Translation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\HoneySelect\StudioNEO_64_Data\Managed\System.dll</HintPath>
+      <Private>False</Private>
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\HoneySelect\StudioNEO_64_Data\Managed\System.Xml.dll</HintPath>
+      <Private>False</Private>
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\HoneySelect\StudioNEO_64_Data\Managed\System.Xml.Linq.dll</HintPath>
+      <Private>False</Private>
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CameraEventsDispatcher.cs" />
+    <Compile Include="CustomEffects\AmplifyBloom.cs" />
+    <Compile Include="CustomEffects\CinematicBloom.cs" />
+    <Compile Include="CustomEffects\LensAberrations.cs" />
+    <Compile Include="CustomEffects\AfterImage.cs" />
+    <Compile Include="CustomEffects\RenderTextureUtility.cs" />
+    <Compile Include="CustomEffects\SEGI.cs" />
+    <Compile Include="CustomEffects\SEGIHSStandardCustom.cs" />
+    <Compile Include="CustomEffects\SMAA.cs" />
+    <Compile Include="CustomEffects\TonemappingColorGrading.cs" />
+    <Compile Include="CustomEffects\VolumetricLight.cs" />
+    <Compile Include="CustomEffects\VolumetricLightRenderer.cs" />
+    <Compile Include="Effects\AmbientOcclusion\AmbientOcclusion.cs" />
+    <Compile Include="Effects\AmbientOcclusion\Editor\AmbientOcclusionEditor.cs" />
+    <Compile Include="Effects\AmbientOcclusion\Helpers\PropertyObserver.cs" />
+    <Compile Include="Effects\AmbientOcclusion\Helpers\Settings.cs" />
+    <Compile Include="Effects\AntiAliasing\AntiAliasing.cs" />
+    <Compile Include="Effects\AntiAliasing\Editor\AntiAliasingEditor.cs" />
+    <Compile Include="Effects\AntiAliasing\Editor\IAntiAliasingEditor.cs" />
+    <Compile Include="Effects\AntiAliasing\FXAA\Editor\FXAAEditor.cs" />
+    <Compile Include="Effects\AntiAliasing\FXAA\FXAA.cs" />
+    <Compile Include="Effects\AntiAliasing\IAntiAliasing.cs" />
+    <Compile Include="Effects\AntiAliasing\SMAA\Editor\SMAAEditor.cs" />
+    <Compile Include="Effects\AntiAliasing\SMAA\SMAA.cs" />
+    <Compile Include="Effects\Bloom\Bloom.cs" />
+    <Compile Include="Effects\Bloom\Editor\BloomEditor.cs" />
+    <Compile Include="Effects\Bloom\Editor\BloomGraphDrawer.cs" />
+    <Compile Include="Effects\Common\Editor\EditorGUIHelper.cs" />
+    <Compile Include="Effects\Common\Editor\FieldFinder.cs" />
+    <Compile Include="Effects\Common\Editor\MinDrawer.cs" />
+    <Compile Include="Effects\Common\ImageEffectHelper.cs" />
+    <Compile Include="Effects\Common\MinAttribute.cs" />
+    <Compile Include="Effects\Common\RenderTextureUtility.cs" />
+    <Compile Include="Effects\DepthOfField\DepthOfField.cs" />
+    <Compile Include="Effects\DepthOfField\Editor\DepthOfFieldEditor.cs" />
+    <Compile Include="Effects\LensAberrations\Editor\LensAberrationsEditor.cs" />
+    <Compile Include="Effects\LensAberrations\LensAberrations.cs" />
+    <Compile Include="Effects\ScreenSpaceReflection\Editor\ScreenSpaceReflectionEditor.cs" />
+    <Compile Include="Effects\ScreenSpaceReflection\ScreenSpaceReflection2.cs" />
+    <Compile Include="Effects\TonemappingColorGrading\Editor\TonemappingColorGradingEditor.cs" />
+    <Compile Include="Effects\TonemappingColorGrading\TonemappingColorGrading.cs" />
+    <Compile Include="HSIBL\GUIstrings.cs" />
+    <Compile Include="HSIBL\HSIBL.cs" />
+    <Compile Include="HSIBL\HSIBLPlugin.cs" />
+    <Compile Include="HSIBL\IBLData\AfterImage.cs" />
+    <Compile Include="HSIBL\IBLData\AlphaKey.cs" />
+    <Compile Include="HSIBL\IBLData\AmplifyBloom.cs" />
+    <Compile Include="HSIBL\IBLData\Antialiasing.cs" />
+    <Compile Include="HSIBL\IBLData\Bloom.cs" />
+    <Compile Include="HSIBL\IBLData\BloomAndFlares.cs" />
+    <Compile Include="HSIBL\IBLData\Blur.cs" />
+    <Compile Include="HSIBL\IBLData\ColorCorrectionCurves.cs" />
+    <Compile Include="HSIBL\IBLData\ColorGrading.cs" />
+    <Compile Include="HSIBL\IBLData\ColorKey.cs" />
+    <Compile Include="HSIBL\IBLData\Cubemap.cs" />
+    <Compile Include="HSIBL\IBLData\DefaultLight.cs" />
+    <Compile Include="HSIBL\IBLData\DepthOfField.cs" />
+    <Compile Include="HSIBL\IBLData\EffectsOrder.cs" />
+    <Compile Include="HSIBL\IBLData\EyeAdaptation.cs" />
+    <Compile Include="HSIBL\IBLData\Lens.cs" />
+    <Compile Include="HSIBL\IBLData\LensFlareInstance_LensFlareGradient.cs" />
+    <Compile Include="HSIBL\IBLData\LensGlareInstance_CromaticColorGradient.cs" />
+    <Compile Include="HSIBL\IBLData\Light.cs" />
+    <Compile Include="HSIBL\IBLData\MotionBlur.cs" />
+    <Compile Include="HSIBL\IBLData\NoiseAndGrain.cs" />
+    <Compile Include="HSIBL\IBLData\Reflection.cs" />
+    <Compile Include="HSIBL\IBLData\Root.cs" />
+    <Compile Include="HSIBL\IBLData\Segi.cs" />
+    <Compile Include="HSIBL\IBLData\Skybox.cs" />
+    <Compile Include="HSIBL\IBLData\Smaa.cs" />
+    <Compile Include="HSIBL\IBLData\Ssao.cs" />
+    <Compile Include="HSIBL\IBLData\Ssr.cs" />
+    <Compile Include="HSIBL\IBLData\SunShafts.cs" />
+    <Compile Include="HSIBL\IBLData\Tonemapping.cs" />
+    <Compile Include="HSIBL\IBLData\VignetteAndChromaticAberration.cs" />
+    <Compile Include="HSIBL\IBLData\VolumetricLights.cs" />
+    <Compile Include="HSIBL\IBLPatches.cs" />
+    <Compile Include="HSIBL\IBLPatches.NodeDraw_Patch.cs" />
+    <Compile Include="HSIBL\IBLUI.cs" />
+    <Compile Include="HSIBL\ProceduralSkyboxManager.cs" />
+    <Compile Include="HSIBL\Res.cs" />
+    <Compile Include="HSIBL\SkyboxManager.cs" />
+    <Compile Include="HSLRE.EffectData.cs" />
+    <Compile Include="SaveLoad\Serialization.cs" />
+    <Compile Include="Settings\Settings.AmplifyBloomSetting.cs" />
+    <Compile Include="Settings\Settings.AntialiasingSetting.cs" />
+    <Compile Include="Settings\Settings.BasicSetting.cs" />
+    <Compile Include="Settings\Settings.BloomAndFlaresSetting.cs" />
+    <Compile Include="Settings\Settings.BloomSetting.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Settings\Settings.CurveSetting.cs" />
+    <Compile Include="Settings\Settings.DepthOfFieldSetting.cs" />
+    <Compile Include="Settings\Settings.LensAberrationSetting.cs" />
+    <Compile Include="Settings\Settings.NoiseAndGrainSetting.cs" />
+    <Compile Include="Settings\Settings.Preset.cs" />
+    <Compile Include="Settings\Settings.SEGISetting.cs" />
+    <Compile Include="Settings\Settings.ShadowSetting.cs" />
+    <Compile Include="Settings\Settings.SMAASetting.cs" />
+    <Compile Include="Settings\Settings.SSAOSetting.cs" />
+    <Compile Include="Settings\Settings.SSRSetting.cs" />
+    <Compile Include="Settings\Settings.SunShaftsSetting.cs" />
+    <Compile Include="Settings\Settings.ToneMapSetting.cs" />
+    <Compile Include="Settings\Settings.VignetteSetting.cs" />
+    <Compile Include="VariousPatches.cs" />
+    <Compile Include="HSLRE.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\LREResources.unity3d" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HSExtSave\HSExtSave.csproj">
+      <Project>{27695e5f-8d1e-41dc-a81c-1f0c1814627c}</Project>
+      <Name>HSExtSave</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />
+    <None Include="Effects\AmbientOcclusion\Resources\AmbientOcclusion.shader" />
+    <None Include="Effects\AntiAliasing\FXAA\Resources\FXAA.shader" />
+    <None Include="Effects\AntiAliasing\FXAA\Resources\FXAA3.cginc" />
+    <None Include="Effects\AntiAliasing\SMAA\Resources\AreaTex.tga" />
+    <None Include="Effects\AntiAliasing\SMAA\Resources\SearchTex.tga" />
+    <None Include="Effects\AntiAliasing\SMAA\Resources\SMAA.cginc" />
+    <None Include="Effects\AntiAliasing\SMAA\Resources\SMAA.shader" />
+    <None Include="Effects\Bloom\Resources\Bloom.cginc" />
+    <None Include="Effects\Bloom\Resources\Bloom.shader" />
+    <None Include="Effects\DepthOfField\Resources\BokehSplatting.shader" />
+    <None Include="Effects\DepthOfField\Resources\DepthOfField.shader" />
+    <None Include="Effects\DepthOfField\Resources\MedianFilter.shader" />
+    <None Include="Effects\LensAberrations\Resources\LensAberrations.shader" />
+    <None Include="Effects\ScreenSpaceReflection\Resources\ScreenSpaceRaytrace.cginc" />
+    <None Include="Effects\ScreenSpaceReflection\Resources\ScreenSpaceReflection.shader" />
+    <None Include="Effects\TonemappingColorGrading\Resources\HistogramCompute.compute" />
+    <None Include="Effects\TonemappingColorGrading\Resources\HistogramRender.shader" />
+    <None Include="Effects\TonemappingColorGrading\Resources\TonemappingColorGrading.cginc" />
+    <None Include="Effects\TonemappingColorGrading\Resources\TonemappingColorGrading.shader" />
+    <EmbeddedResource Include="Resources\postprocessingeffects_resource" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Effects\DepthOfField\Helpers\HexShape.psd" />
+    <Content Include="Effects\DepthOfField\Helpers\RoundedHexShape.tif" />
+    <Content Include="Effects\DepthOfField\Helpers\SphereShape.psd" />
+    <Content Include="Effects\TonemappingColorGrading\Helpers\NeutralLUT16.png" />
+    <Content Include="Effects\TonemappingColorGrading\Helpers\NeutralLUT32.png" />
+  </ItemGroup>
+  <Import Project="..\ToolBox_Shared\ToolBox_Shared.projitems" Label="Shared" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(TargetDir)$(TargetName)$(TargetExt)" "D:\Ducky\Projects\Joan6694-hsplugins-30b8b7f4b50d\__Output"
+copy /Y "$(TargetDir)$(TargetName)$(TargetExt)" "E:\illusion\HoneySelect\Plugins"
+copy /Y "$(TargetDir)$(TargetName)$(TargetExt)" "E:\illusion\HoneySelect_\Plugins"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
