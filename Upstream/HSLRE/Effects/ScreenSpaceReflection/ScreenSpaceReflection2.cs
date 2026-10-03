@@ -339,6 +339,10 @@ namespace UnityStandardAssets.CinematicEffects
 				screenScale /= Mathf.Max(screenX / SystemInfo.maxTextureSize, screenY / SystemInfo.maxTextureSize);
 			}*/
 
+			// screenScale converts the window size to the capture size. While the camera already renders into the capture
+			// target its pixel size IS the capture size, so applying the scale again would square the multiplier.
+			Vector2 screenScale = camera_.targetTexture != null ? Vector2.one : this.screenScale;
+
 			// these should not cross max texture dimensions
 			var rtW = ((int)(camera_.pixelWidth * screenScale.x)) / downsampleAmount;
 			var rtH = ((int)(camera_.pixelHeight * screenScale.y)) / downsampleAmount;
